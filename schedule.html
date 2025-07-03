@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule - BSCS Educational Tour</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: rgba(44, 62, 80, 0.85);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #1abc9c;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(44, 62, 80, 0.95);
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+    }
+
+    .hero {
+      height: 60vh;
+      background: url('15.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 100px 20px 60px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .day-schedule {
+      margin-bottom: 40px;
+      background: #f9f9f9;
+      border-left: 5px solid #1abc9c;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .day-schedule h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .day-schedule ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .day-schedule li {
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .day-schedule li:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">BSCS Educational Tour</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Tour Schedule</h1>
+      <p>Explore the activities planned for each day of the BSCS Educational Tour</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>3-Day Educational Tour Schedule</h2>
+
+    <div class="day-schedule">
+      <h3>Day 1 - June 09, 2025</h3>
+      <ul>
+        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+        <li>08:00 AM – Proceed to Pasig City</li>
+        <li>09:30 AM – Visit: Foundever Philippines</li>
+        <li>12:00 NN – Pack Lunch</li>
+        <li>01:30 PM – Visit: Google Philippines</li>
+        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h3>Day 2 - June 10, 2025</h3>
+      <ul>
+        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+        <li>07:00 AM – Proceed to BGC</li>
+        <li>08:30 AM – Visit: Teleperformance Philippines</li>
+        <li>12:00 NN – Pack Lunch</li>
+        <li>01:30 PM – Visit: Kollab Philippines</li>
+        <li>Optional Activity: Trinoma Mall</li>
+        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+      </ul>
+    </div>
+
+    <div class="day-schedule">
+      <h3>Day 3 - June 11, 2025</h3>
+      <ul>
+        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+        <li>07:00 AM – Proceed to: Asian Development Bank (ADB) c/o CXC</li>
+        <li>11:30 AM – Lunch @ DJM Dormitory</li>
+        <li>12:30 PM – Proceed to Eastwood</li>
+        <li>01:30 PM – Visit: MicroSourcing</li>
+        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BSCS Educational Tour Blog
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guest Speakers - BSCS Educational Tour</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: rgba(44, 62, 80, 0.85);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #1abc9c;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(44, 62, 80, 0.95);
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+    }
+
+    .hero {
+      height: 60vh;
+      background: url('18.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+    }
+
+    .section {
+      padding: 100px 20px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .speaker-card {
+      background: #f4f4f4;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .speaker-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .speaker-card h3 {
+      margin: 10px 0 5px;
+      color: #2c3e50;
+    }
+
+    .speaker-card p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .speaker-card .speech {
+      margin-top: 10px;
+      font-style: italic;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">BSCS Educational Tour</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Guest Speakers</h1>
+      <p>Meet the experts who inspired and shared their insights during our tour.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Guest Speakers</h2>
+    <div class="speaker-grid">
+
+      <div class="speaker-card">
+        <img src="zoe.png" alt="Zoe Diaz De Rivera">
+        <h3>Ms. Zoe Diaz De Rivera</h3>
+        <p>Representative</p>
+        <p>IT & Business Process Association of the Philippines (IBPAP)</p>
+        <p class="speech">Ms. De Rivera gave an industry overview of the IT-BPM sector, highlighting its role in the Philippine economy and its continued growth through technologies like AI and automation. She emphasized that technical skills are important, but soft skills such as communication, adaptability, and critical thinking are equally valued. She encouraged students to build strong digital portfolios and actively seek internship opportunities to be industry-ready.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="yves.png" alt="Yves Gonzalez">
+        <h3>Atty. Yves Gonzalez</h3>
+        <p>Head of Government Affairs and Public Policy</p>
+        <p>Google Philippines</p>
+        <p class="speech">Atty. Gonzalez discussed Google’s mission and how it leads global innovation through technologies like AI that power Search, Translate, and Assistant. He also emphasized digital inclusion programs such as Be Internet Awesome, and the importance of ethical tech governance. He encouraged students to pursue careers where they can combine technical skills with meaningful impact, and to align their passions with societal needs.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="grace.png" alt="Beatrice Grace Bonjibod">
+        <h3>Ms. Beatrice Grace Bonjibod</h3>
+        <p>Brand Marketing Specialist</p>
+        <p>Teleperformance Philippines</p>
+        <p class="speech">Ms. Bonjibod introduced Teleperformance as a global leader in digital business services. She shared the company’s commitment to innovation, inclusivity, and gender equality—highlighting that 53% of TP’s workforce are women. She stressed the growing importance of soft skills such as communication, collaboration, and empathy in today’s tech-driven industry. Students were encouraged to develop both technical and interpersonal competencies to succeed in the workplace.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="ralph.png" alt="Ralph Vincent Regalado">
+        <h3>Mr. Ralph Vincent Regalado</h3>
+        <p>Chief Scientist and Head of AI</p>
+        <p>Kollab</p>
+        <p class="speech">Mr. Regalado opened the session with a welcome and shared Kollab’s vision of using AI and collaborative solutions to drive digital innovation. He highlighted the importance of purpose-driven tech and innovation rooted in impact.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="jasmine.png" alt="Jazmine Calma">
+        <h3>Ms. Jazmine Calma</h3>
+        <p>Senior Engineer for Quality Assurance</p>
+        <p>Kollab</p>
+        <p class="speech">She presented “Why Culture Matters,” explaining how a healthy workplace culture is key to product excellence and personal growth. She urged students to value company culture when choosing where to work or whom to work with.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="keith.png" alt="Toni-Jan Keith Monserrat">
+        <h3>Mr. Toni-Jan Keith Monserrat</h3>
+        <p>Senior Principal Engineer for AI and Data</p>
+        <p>Kollab</p>
+        <p class="speech">He delivered a session on “Applied AI: From Classroom to Real Use Cases,” connecting students’ academic knowledge to practical applications in industries like agriculture, health, and customer service. He encouraged students to use tech for meaningful social impact.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="miguel.png" alt="Miguel Siriban">
+        <h3>Mr. Miguel Siriban</h3>
+        <p>UI/UX Designer and Developer</p>
+        <p>Kollab</p>
+        <p class="speech">He led a talk on “How to Build a Dev Portfolio that Gets You Hired,” offering practical tips on showcasing skills through project storytelling and design. He emphasized that creativity and clarity can make portfolios stand out.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="ADB.png" alt="ADB IT Directors">
+        <h3>Matt Farley <br>& ADB IT Directors</h3>
+        <p>Senior IT Leaders</p>
+        <p>Asian Development Bank (ADB)</p>
+        <p class="speech">Mr. Farley and the ADB team provided an overview of how IT contributes to development banking across Asia and the Pacific. They shared insights into global IT practices, the bank’s digital transformation projects, and offered career advice for working in international, mission-driven organizations. They encouraged students to apply their skills to solve real-world challenges.</p>
+      </div>
+
+      <div class="speaker-card">
+        <img src="heidee.png" alt="Heidee Enriquez">
+        <h3>Ms. Heidee Enriquez</h3>
+        <p>CEO</p>
+        <p>MicroSourcing</p>
+        <p class="speech">Ms. Enriquez welcomed the students and emphasized the importance of digital skills, adaptability, and continuous learning in today’s fast-changing job market. She inspired students to remain curious and take every opportunity to learn how their education applies in real-world scenarios.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BSCS Educational Tour Blog
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>

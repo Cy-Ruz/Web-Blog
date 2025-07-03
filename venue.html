@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Venue - BSCS Educational Tour</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    html { scroll-padding-top: 70px; }
+    body { scroll-behavior: smooth; }
+
+    header {
+      background: rgba(44, 62, 80, 0.85);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      color: white;
+      position: relative;
+    }
+
+    .logo { font-size: 1.5rem; font-weight: bold; }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin-left: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: #1abc9c; }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: rgba(44, 62, 80, 0.95);
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+    }
+
+    .hero {
+      height: 60vh;
+      background: url('7.jpg') no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero-content p { font-size: 1.2rem; }
+
+    .section {
+      padding: 100px 20px 60px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #2c3e50;
+    }
+
+    .venue-card {
+      background: #f4f4f4;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .venue-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background-color: #f4f4f4;
+    }
+
+    .venue-card h3 { color: #2c3e50; margin-bottom: 10px; }
+    .venue-card p { margin: 5px 0; color: #555; }
+
+    .map {
+      width: 100%;
+      height: 300px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">BSCS Educational Tour</div>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="speakers.html">Speakers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Company Venues</h1>
+      <p>Explore the locations we visited during our BSCS Educational Tour</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="venue-card">
+      <img src="foundever.jpg" alt="Foundever Philippines">
+      <h3>Foundever Philippines</h3>
+      <p>A global leader in customer experience (CX) solutions and contact center innovation.</p>
+      <p><strong>Address:</strong> Technopoint Building, Ortigas Center, Pasig City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=Technopoint+Building,+Ortigas+Center,+Pasig+City&output=embed"></iframe>
+    </div>
+
+    <div class="venue-card">
+      <img src="google.jpg" alt="Google Philippines">
+      <h3>Google Philippines</h3>
+      <p>Empowering the world through advanced digital services, search, and AI research.</p>
+      <p><strong>Address:</strong> Bonifacio High Street Central, BGC, Taguig City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=Google+Philippines+BGC+Taguig&output=embed"></iframe>
+    </div>
+
+    <div class="venue-card">
+      <img src="teleperformance.jpg" alt="Teleperformance Philippines">
+      <h3>Teleperformance Philippines</h3>
+      <p>Top-tier BPO and IT services provider delivering global customer support.</p>
+      <p><strong>Address:</strong> SM Aura Office Tower, BGC, Taguig City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=SM+Aura+Office+Tower+BGC+Taguig&output=embed"></iframe>
+    </div>
+
+    <div class="venue-card">
+      <img src="Kollab-Logo.png" alt="Kollab Philippines">
+      <h3>Kollab Philippines</h3>
+      <p>Creative tech studio focused on multimedia, collaboration, and design solutions.</p>
+      <p><strong>Address:</strong> Greenfield Tower, Mandaluyong City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=Greenfield+Tower+Mandaluyong&output=embed"></iframe>
+    </div>
+
+    <div class="venue-card">
+      <img src="ADB1.png" alt="ADB and CXC">
+      <h3>Asian Development Bank (ADB) & CXC</h3>
+      <p>Regional development bank promoting inclusive and sustainable growth in Asia and the Pacific.</p>
+      <p><strong>Address:</strong> ADB Headquarters, ADB Avenue, Ortigas Center, Mandaluyong City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=ADB+Headquarters+Ortigas+Mandaluyong&output=embed"></iframe>
+    </div>
+
+    <div class="venue-card">
+      <img src="microsourcing.jpg" alt="MicroSourcing">
+      <h3>MicroSourcing</h3>
+      <p>Business process outsourcing company supporting global businesses with scalable teams.</p>
+      <p><strong>Address:</strong> Global One Center, Eastwood, Quezon City</p>
+      <iframe class="map" src="https://www.google.com/maps?q=Global+One+Center+Eastwood+Quezon+City&output=embed"></iframe>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BSCS Educational Tour Blog
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
