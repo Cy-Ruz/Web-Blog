@@ -150,9 +150,19 @@
         color: var(--white);
         padding: 0 20px;
         position: relative;
+        overflow: hidden;
+      }
+
+      .home-bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 30, 50, 0.55); /* darken the background */
+        z-index: 1;
       }
 
       .home-content.redesigned-home {
+        position: relative;
+        z-index: 2;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -488,6 +498,7 @@
     </header>
 
     <section id="home" class="home">
+      <div class="home-bg-overlay"></div>
       <div class="home-content redesigned-home">
         <div class="home-text">
           <h4>WELCOME TO</h4>
@@ -497,9 +508,6 @@
             <strong>BSCS Tour 2025</strong> experience.
           </p>
           <a href="#schedule" class="cta-btn">View Schedule</a>
-        </div>
-        <div class="home-img-wrapper">
-          <img src="3.jpg" alt="BSCS Tour" class="home-hero-img-large" />
         </div>
       </div>
     </section>
