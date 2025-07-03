@@ -181,6 +181,13 @@
       letter-spacing: 1px;
     }
 
+    .venue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 32px;
+      align-items: stretch;
+    }
+
     .venue-card {
       background: #fff;
       margin-bottom: 40px;
@@ -207,6 +214,7 @@
       margin-bottom: 18px;
       background-color: #f4f4f4;
       box-shadow: 0 2px 8px rgba(30,41,59,0.07);
+      aspect-ratio: 21/11;
     }
 
     .venue-card h3 {
@@ -302,52 +310,54 @@
   </section>
 
   <section class="section">
-    <div class="venue-card">
-      <img src="foundever.jpg" alt="Foundever Philippines">
-      <h3>Foundever Philippines</h3>
-      <p>A global leader in customer experience (CX) solutions and contact center innovation.</p>
-      <p><strong>Address:</strong> Technopoint Building, Ortigas Center, Pasig City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=Technopoint+Building,+Ortigas+Center,+Pasig+City&output=embed"></iframe>
-    </div>
+    <div class="venue-grid">
+      <div class="venue-card">
+        <img src="foundever.jpg" alt="Foundever Philippines" loading="lazy" width="420" height="220">
+        <h3>Foundever Philippines</h3>
+        <p>A global leader in customer experience (CX) solutions and contact center innovation.</p>
+        <p><strong>Address:</strong> Technopoint Building, Ortigas Center, Pasig City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Technopoint+Building,+Ortigas+Center,+Pasig+City&output=embed" loading="lazy"></iframe>
+      </div>
 
-    <div class="venue-card">
-      <img src="google.jpg" alt="Google Philippines">
-      <h3>Google Philippines</h3>
-      <p>Empowering the world through advanced digital services, search, and AI research.</p>
-      <p><strong>Address:</strong> Bonifacio High Street Central, BGC, Taguig City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=Google+Philippines+BGC+Taguig&output=embed"></iframe>
-    </div>
+      <div class="venue-card">
+        <img src="google.jpg" alt="Google Philippines" loading="lazy" width="420" height="220">
+        <h3>Google Philippines</h3>
+        <p>Empowering the world through advanced digital services, search, and AI research.</p>
+        <p><strong>Address:</strong> Bonifacio High Street Central, BGC, Taguig City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Google+Philippines+BGC+Taguig&output=embed" loading="lazy"></iframe>
+      </div>
 
-    <div class="venue-card">
-      <img src="teleperformance.jpg" alt="Teleperformance Philippines">
-      <h3>Teleperformance Philippines</h3>
-      <p>Top-tier BPO and IT services provider delivering global customer support.</p>
-      <p><strong>Address:</strong> SM Aura Office Tower, BGC, Taguig City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=SM+Aura+Office+Tower+BGC+Taguig&output=embed"></iframe>
-    </div>
+      <div class="venue-card">
+        <img src="teleperformance.jpg" alt="Teleperformance Philippines" loading="lazy" width="420" height="220">
+        <h3>Teleperformance Philippines</h3>
+        <p>Top-tier BPO and IT services provider delivering global customer support.</p>
+        <p><strong>Address:</strong> SM Aura Office Tower, BGC, Taguig City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=SM+Aura+Office+Tower+BGC+Taguig&output=embed" loading="lazy"></iframe>
+      </div>
 
-    <div class="venue-card">
-      <img src="Kollab-Logo.png" alt="Kollab Philippines">
-      <h3>Kollab Philippines</h3>
-      <p>Creative tech studio focused on multimedia, collaboration, and design solutions.</p>
-      <p><strong>Address:</strong> Greenfield Tower, Mandaluyong City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=Greenfield+Tower+Mandaluyong&output=embed"></iframe>
-    </div>
+      <div class="venue-card">
+        <img src="Kollab-Logo.png" alt="Kollab Philippines" loading="lazy" width="420" height="220">
+        <h3>Kollab Philippines</h3>
+        <p>Creative tech studio focused on multimedia, collaboration, and design solutions.</p>
+        <p><strong>Address:</strong> Greenfield Tower, Mandaluyong City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Greenfield+Tower+Mandaluyong&output=embed" loading="lazy"></iframe>
+      </div>
 
-    <div class="venue-card">
-      <img src="ADB1.png" alt="ADB and CXC">
-      <h3>Asian Development Bank (ADB) & CXC</h3>
-      <p>Regional development bank promoting inclusive and sustainable growth in Asia and the Pacific.</p>
-      <p><strong>Address:</strong> ADB Headquarters, ADB Avenue, Ortigas Center, Mandaluyong City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=ADB+Headquarters+Ortigas+Mandaluyong&output=embed"></iframe>
-    </div>
+      <div class="venue-card">
+        <img src="ADB1.png" alt="ADB and CXC" loading="lazy" width="420" height="220">
+        <h3>Asian Development Bank (ADB) & CXC</h3>
+        <p>Regional development bank promoting inclusive and sustainable growth in Asia and the Pacific.</p>
+        <p><strong>Address:</strong> ADB Headquarters, ADB Avenue, Ortigas Center, Mandaluyong City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=ADB+Headquarters+Ortigas+Mandaluyong&output=embed" loading="lazy"></iframe>
+      </div>
 
-    <div class="venue-card">
-      <img src="microsourcing.jpg" alt="MicroSourcing">
-      <h3>MicroSourcing</h3>
-      <p>Business process outsourcing company supporting global businesses with scalable teams.</p>
-      <p><strong>Address:</strong> Global One Center, Eastwood, Quezon City</p>
-      <iframe class="map" src="https://www.google.com/maps?q=Global+One+Center+Eastwood+Quezon+City&output=embed"></iframe>
+      <div class="venue-card">
+        <img src="microsourcing.jpg" alt="MicroSourcing" loading="lazy" width="420" height="220">
+        <h3>MicroSourcing</h3>
+        <p>Business process outsourcing company supporting global businesses with scalable teams.</p>
+        <p><strong>Address:</strong> Global One Center, Eastwood, Quezon City</p>
+        <iframe class="map" src="https://www.google.com/maps?q=Global+One+Center+Eastwood+Quezon+City&output=embed" loading="lazy"></iframe>
+      </div>
     </div>
   </section>
 
