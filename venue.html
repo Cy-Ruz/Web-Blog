@@ -5,20 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Venue - BSCS Educational Tour</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    html { scroll-padding-top: 70px; }
-    body { scroll-behavior: smooth; }
-
+    :root {
+      --primary: #2563eb;
+      --secondary: #f1f5f9;
+      --accent: #06b6d4;
+      --text: #1e293b;
+      --muted: #64748b;
+      --white: #fff;
+      --shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+      --radius: 18px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Inter', Arial, sans-serif; }
+    html { scroll-padding-top: 70px; background: var(--secondary);}
+    body { scroll-behavior: smooth; color: var(--text); background: var(--secondary);}
     header {
       background: var(--white);
-      box-shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+      box-shadow: var(--shadow);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
       transition: box-shadow 0.2s;
     }
-
     .navbar {
       max-width: 1200px;
       margin: auto;
@@ -26,28 +34,22 @@
       justify-content: space-between;
       align-items: center;
       padding: 18px 32px;
-      color: #2563eb;
+      color: var(--primary);
     }
-
     .logo {
       font-size: 2rem;
       font-weight: 700;
-      color: #2563eb;
+      color: var(--primary);
       letter-spacing: 1px;
     }
-
     .nav-links {
       list-style: none;
       display: flex;
       gap: 32px;
     }
-
-    .nav-links li {
-      margin: 0;
-    }
-
+    .nav-links li { margin: 0; }
     .nav-links a {
-      color: #1e293b;
+      color: var(--text);
       text-decoration: none;
       font-weight: 500;
       font-size: 1.1rem;
@@ -55,71 +57,45 @@
       border-radius: 8px;
       transition: background 0.2s, color 0.2s;
     }
-
     .nav-links a:hover {
-      background: #06b6d4;
-      color: #fff;
+      background: var(--accent);
+      color: var(--white);
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
     }
-
     .menu-toggle span {
       height: 3px;
       width: 28px;
-      background: #2563eb;
+      background: var(--primary);
       margin: 5px 0;
       border-radius: 2px;
     }
-
     @media (max-width: 900px) {
-      .navbar {
-        padding: 14px 16px;
-      }
-
-      .nav-links {
-        gap: 16px;
-      }
+      .navbar { padding: 14px 16px; }
+      .nav-links { gap: 16px; }
     }
-
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
+      .menu-toggle { display: flex; }
       .nav-links {
         position: absolute;
         top: 60px;
         right: 0;
-        background: #fff;
+        background: var(--white);
         flex-direction: column;
         width: 100vw;
         max-height: 0;
         overflow: hidden;
-        box-shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+        box-shadow: var(--shadow);
         transition: max-height 0.3s;
         gap: 0;
       }
-
-      .nav-links.active {
-        max-height: 300px;
-      }
-
-      .nav-links li {
-        text-align: center;
-        margin: 0;
-      }
-
-      .nav-links a {
-        display: block;
-        padding: 18px 0;
-        border-radius: 0;
-      }
+      .nav-links.active { max-height: 300px; }
+      .nav-links li { text-align: center; margin: 0; }
+      .nav-links a { display: block; padding: 18px 0; border-radius: 0; }
     }
-
     .hero {
       min-height: 60vh;
       width: 100vw;
@@ -132,7 +108,6 @@
       color: white;
       overflow: hidden;
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -140,7 +115,6 @@
       background: rgba(20, 30, 50, 0.55);
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -152,7 +126,6 @@
       padding: 40px 32px;
       backdrop-filter: blur(2px);
     }
-
     .hero-content h1 {
       font-size: 2.5rem;
       font-weight: 800;
@@ -160,52 +133,43 @@
       color: #fff;
       text-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-
     .hero-content p {
       font-size: 1.15rem;
       color: #e0e7ef;
     }
-
     .section {
       padding: 80px 20px 60px;
       max-width: 1200px;
       margin: auto;
     }
-
     .section h2 {
       text-align: center;
       margin-bottom: 30px;
       font-size: 2rem;
-      color: #2563eb;
+      color: var(--primary);
       font-weight: 700;
       letter-spacing: 1px;
     }
-
     .venue-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 32px;
       align-items: stretch;
     }
-
     .venue-card {
-      background: #fff;
-      margin-bottom: 40px;
+      background: var(--white);
+      margin-bottom: 0;
       padding: 28px 24px 20px 24px;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(30,41,59,0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: box-shadow 0.18s;
-      /* Removed transform from transition to prevent zoom effect */
     }
-
     .venue-card:hover {
-      /* Only shadow on hover, no transform/scale */
       box-shadow: 0 8px 32px rgba(30,41,59,0.13);
     }
-
     .venue-card img {
       width: 100%;
       max-width: 420px;
@@ -216,27 +180,24 @@
       background-color: #f4f4f4;
       box-shadow: 0 2px 8px rgba(30,41,59,0.07);
       aspect-ratio: 21/11;
+      transition: none;
     }
-
     .venue-card h3 {
-      color: #2563eb;
+      color: var(--primary);
       margin-bottom: 10px;
       font-size: 1.3rem;
       font-weight: 600;
       text-align: center;
     }
-
     .venue-card p {
       margin: 5px 0;
-      color: #64748b;
+      color: var(--muted);
       text-align: center;
       font-size: 1.05rem;
     }
-
     .venue-card strong {
-      color: #06b6d4;
+      color: var(--accent);
     }
-
     .map {
       width: 100%;
       height: 240px;
@@ -245,42 +206,24 @@
       border: none;
       box-shadow: 0 2px 8px rgba(30,41,59,0.07);
     }
-
     @media (max-width: 900px) {
-      .section {
-        padding: 40px 4vw 30px;
-      }
-
-      .venue-card img {
-        height: 160px;
-      }
+      .section { padding: 40px 4vw 30px; }
+      .venue-card img { height: 160px; }
     }
-
     @media (max-width: 600px) {
-      .hero-content {
-        padding: 18px 4vw;
-        border-radius: 12px;
-      }
-
-      .venue-card {
-        padding: 16px 6px 14px 6px;
-        border-radius: 10px;
-      }
-
-      .venue-card img {
-        height: 110px;
-      }
-
-      .map {
-        height: 120px;
-      }
+      .hero-content { padding: 18px 4vw; border-radius: 12px; }
+      .venue-card { padding: 16px 6px 14px 6px; border-radius: 10px; }
+      .venue-card img { height: 110px; }
+      .map { height: 120px; }
     }
-
     footer {
       text-align: center;
       padding: 20px;
-      background: #2c3e50;
+      background: var(--primary);
       color: white;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -311,6 +254,7 @@
   </section>
 
   <section class="section">
+    <h2>Tour Venues</h2>
     <div class="venue-grid">
       <section class="venue-card">
         <img src="foundever.jpg" alt="Foundever Philippines" loading="lazy" width="420" height="220">
@@ -319,7 +263,6 @@
         <p><strong>Address:</strong> Technopoint Building, Ortigas Center, Pasig City</p>
         <iframe class="map" src="https://www.google.com/maps?q=Technopoint+Building,+Ortigas+Center,+Pasig+City&output=embed" loading="lazy"></iframe>
       </section>
-
       <section class="venue-card">
         <img src="google.jpg" alt="Google Philippines" loading="lazy" width="420" height="220">
         <h3>Google Philippines</h3>
@@ -327,7 +270,6 @@
         <p><strong>Address:</strong> Bonifacio High Street Central, BGC, Taguig City</p>
         <iframe class="map" src="https://www.google.com/maps?q=Google+Philippines+BGC+Taguig&output=embed" loading="lazy"></iframe>
       </section>
-
       <section class="venue-card">
         <img src="teleperformance.jpg" alt="Teleperformance Philippines" loading="lazy" width="420" height="220">
         <h3>Teleperformance Philippines</h3>
@@ -335,7 +277,6 @@
         <p><strong>Address:</strong> SM Aura Office Tower, BGC, Taguig City</p>
         <iframe class="map" src="https://www.google.com/maps?q=SM+Aura+Office+Tower+BGC+Taguig&output=embed" loading="lazy"></iframe>
       </section>
-
       <section class="venue-card">
         <img src="Kollab-Logo.png" alt="Kollab Philippines" loading="lazy" width="420" height="220">
         <h3>Kollab Philippines</h3>
@@ -343,7 +284,6 @@
         <p><strong>Address:</strong> Greenfield Tower, Mandaluyong City</p>
         <iframe class="map" src="https://www.google.com/maps?q=Greenfield+Tower+Mandaluyong&output=embed" loading="lazy"></iframe>
       </section>
-
       <section class="venue-card">
         <img src="ADB1.png" alt="ADB and CXC" loading="lazy" width="420" height="220">
         <h3>Asian Development Bank (ADB) & CXC</h3>
@@ -351,7 +291,6 @@
         <p><strong>Address:</strong> ADB Headquarters, ADB Avenue, Ortigas Center, Mandaluyong City</p>
         <iframe class="map" src="https://www.google.com/maps?q=ADB+Headquarters+Ortigas+Mandaluyong&output=embed" loading="lazy"></iframe>
       </section>
-
       <section class="venue-card">
         <img src="microsourcing.jpg" alt="MicroSourcing" loading="lazy" width="420" height="220">
         <h3>MicroSourcing</h3>
