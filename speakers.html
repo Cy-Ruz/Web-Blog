@@ -1,394 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Guest Speakers - BSCS Educational Tour</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --secondary: #f1f5f9;
-      --accent: #06b6d4;
-      --text: #1e293b;
-      --muted: #64748b;
-      --white: #fff;
-      --shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
-      --radius: 16px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
-    }
-
-    html {
-      scroll-padding-top: 80px;
-      background: var(--secondary);
-      scroll-behavior: smooth;
-    }
-
-    body {
-      color: var(--text);
-      background: var(--secondary);
-    }
-
-    header {
-      background: var(--white);
-      box-shadow: var(--shadow);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.2s;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 32px;
-      color: var(--primary);
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-links li {
-      margin: 0;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-links a:hover {
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 28px;
-      background: var(--primary);
-      margin: 5px 0;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 900px) {
-      .navbar {
-        padding: 14px 16px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Speakers - BSCS Educational Tour</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #f1f5f9;
+        --accent: #06b6d4;
+        --text: #1e293b;
+        --muted: #64748b;
+        --white: #fff;
+        --shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+        --radius: 16px;
       }
-      .nav-links {
-        gap: 16px;
-      }
-    }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Inter", Arial, sans-serif;
       }
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 0;
+
+      html {
+        scroll-padding-top: 80px;
+        background: var(--secondary);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        color: var(--text);
+        background: var(--secondary);
+      }
+
+      header {
         background: var(--white);
-        flex-direction: column;
-        width: 100vw;
-        max-height: 0;
-        overflow: hidden;
         box-shadow: var(--shadow);
-        transition: max-height 0.3s;
-        gap: 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: box-shadow 0.2s;
       }
-      .nav-links.active {
-        max-height: 300px;
+
+      .navbar {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 32px;
+        color: var(--primary);
       }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+      }
+
       .nav-links li {
-        text-align: center;
         margin: 0;
       }
+
       .nav-links a {
-        display: block;
-        padding: 18px 0;
-        border-radius: 0;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
       }
-    }
 
-    .hero {
-      min-height: 60vh;
-      width: 100vw;
-      background: url('18.jpg') center center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--white);
-      overflow: hidden;
-    }
-    .hero-bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(20, 30, 50, 0.55);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(30,41,59,0.18);
-      border-radius: 28px;
-      box-shadow: 0 8px 32px rgba(30,41,59,0.10);
-      padding: 40px 32px;
-      backdrop-filter: blur(2px);
-    }
-    .hero-content h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    .hero-content p {
-      font-size: 1.15rem;
-      color: #e0e7ef;
-    }
+      .nav-links a:hover {
+        background: var(--accent);
+        color: var(--white);
+      }
 
-    .section {
-      padding: 80px 20px 60px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      color: var(--primary);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-    .speaker-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .speaker-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 24px 18px 18px 18px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: transform 0.18s, box-shadow 0.18s;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .speaker-card:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 8px 32px rgba(30,41,59,0.13);
-    }
-    .speaker-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(30,41,59,0.07);
-      background: #f4f4f4;
-      max-width: 320px;
-    }
-    .speaker-card h3 {
-      margin: 10px 0 5px;
-      color: var(--primary);
-      font-size: 1.15rem;
-      font-weight: 600;
-    }
-    .speaker-card p {
-      margin: 5px 0;
-      color: var(--muted);
-      font-size: 0.97rem;
-    }
-    .speaker-card .speech {
-      margin-top: 10px;
-      font-style: italic;
-      color: #333;
-      font-size: 0.98rem;
-    }
-    footer {
-      text-align: center;
-      padding: 24px 0;
-      background: var(--primary);
-      color: var(--white);
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      margin-top: 40px;
-    }
-    @media (max-width: 900px) {
-      .section {
-        padding: 40px 4vw 30px;
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
       }
-      .speaker-card img {
-        height: 160px;
+
+      .menu-toggle span {
+        height: 3px;
+        width: 28px;
+        background: var(--primary);
+        margin: 5px 0;
+        border-radius: 2px;
       }
-    }
-    @media (max-width: 600px) {
+
+      @media (max-width: 900px) {
+        .navbar {
+          padding: 14px 16px;
+        }
+        .nav-links {
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .nav-links {
+          position: absolute;
+          top: 70px;
+          right: 0;
+          background: var(--white);
+          flex-direction: column;
+          width: 100vw;
+          max-height: 0;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          transition: max-height 0.3s;
+          gap: 0;
+        }
+        .nav-links.active {
+          max-height: 300px;
+        }
+        .nav-links li {
+          text-align: center;
+          margin: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 18px 0;
+          border-radius: 0;
+        }
+      }
+
+      .hero {
+        min-height: 60vh;
+        width: 100vw;
+        background: url("18.jpg") center center/cover no-repeat;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        overflow: hidden;
+      }
+      .hero-bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 30, 50, 0.55);
+        z-index: 1;
+      }
       .hero-content {
-        padding: 18px 4vw;
-        border-radius: 12px;
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(30, 41, 59, 0.18);
+        border-radius: 28px;
+        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.1);
+        padding: 40px 32px;
+        backdrop-filter: blur(2px);
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        color: #fff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+      .hero-content p {
+        font-size: 1.15rem;
+        color: #e0e7ef;
+      }
+
+      .section {
+        padding: 80px 20px 60px;
+        max-width: 1200px;
+        margin: auto;
+      }
+      .section h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .speaker-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
       }
       .speaker-card {
-        padding: 14px 6px 10px 6px;
-        border-radius: 10px;
+        background: var(--white);
+        border-radius: 16px;
+        padding: 24px 18px 18px 18px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: transform 0.18s, box-shadow 0.18s;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .speaker-card:hover {
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.13);
       }
       .speaker-card img {
-        height: 110px;
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 8px rgba(30, 41, 59, 0.07);
+        background: #f4f4f4;
+        max-width: 320px;
       }
-    }
-  </style>
-</head>
-<body>
+      .speaker-card h3 {
+        margin: 10px 0 5px;
+        color: var(--primary);
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+      .speaker-card p {
+        margin: 5px 0;
+        color: var(--muted);
+        font-size: 0.97rem;
+      }
+      .speaker-card .speech {
+        margin-top: 10px;
+        font-style: italic;
+        color: #333;
+        font-size: 0.98rem;
+      }
+      footer {
+        text-align: center;
+        padding: 24px 0;
+        background: var(--primary);
+        color: var(--white);
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin-top: 40px;
+      }
+      @media (max-width: 900px) {
+        .section {
+          padding: 40px 4vw 30px;
+        }
+        .speaker-card img {
+          height: 160px;
+        }
+      }
+      @media (max-width: 600px) {
+        .hero-content {
+          padding: 18px 4vw;
+          border-radius: 12px;
+        }
+        .speaker-card {
+          padding: 14px 6px 10px 6px;
+          border-radius: 10px;
+        }
+        .speaker-card img {
+          height: 110px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">BSCS Educational Tour</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="speakers.html">Speakers</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">BSCS Educational Tour</div>
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+    <section class="hero">
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-content">
+        <h1>Guest Speakers</h1>
+        <p>
+          Meet the experts who inspired and shared their insights during our
+          tour.
+        </p>
       </div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="venue.html">Venue</a></li>
-        <li><a href="speakers.html">Speakers</a></li>
-      </ul>
-    </nav>
-  </header>
+    </section>
 
-  <section class="hero">
-    <div class="hero-bg-overlay"></div>
-    <div class="hero-content">
-      <h1>Guest Speakers</h1>
-      <p>Meet the experts who inspired and shared their insights during our tour.</p>
-    </div>
-  </section>
+    <section class="section">
+      <h2>Guest Speakers</h2>
+      <div class="speaker-grid">
+        <div class="speaker-card">
+          <img src="zoe.png" alt="Zoe Diaz De Rivera" />
+          <h3>Ms. Zoe Diaz De Rivera</h3>
+          <p>Representative</p>
+          <p>IT & Business Process Association of the Philippines (IBPAP)</p>
+          <p class="speech">
+            Ms. De Rivera gave an industry overview of the IT-BPM sector,
+            highlighting its role in the Philippine economy and its continued
+            growth through technologies like AI and automation. She emphasized
+            that technical skills are important, but soft skills such as
+            communication, adaptability, and critical thinking are equally
+            valued. She encouraged students to build strong digital portfolios
+            and actively seek internship opportunities to be industry-ready.
+          </p>
+        </div>
 
-  <section class="section">
-    <h2>Guest Speakers</h2>
-    <div class="speaker-grid">
+        <div class="speaker-card">
+          <img src="yves.png" alt="Yves Gonzalez" />
+          <h3>Atty. Yves Gonzalez</h3>
+          <p>Head of Government Affairs and Public Policy</p>
+          <p>Google Philippines</p>
+          <p class="speech">
+            Atty. Gonzalez discussed Google’s mission and how it leads global
+            innovation through technologies like AI that power Search,
+            Translate, and Assistant. He also emphasized digital inclusion
+            programs such as Be Internet Awesome, and the importance of ethical
+            tech governance. He encouraged students to pursue careers where they
+            can combine technical skills with meaningful impact, and to align
+            their passions with societal needs.
+          </p>
+        </div>
 
-      <div class="speaker-card">
-        <img src="zoe.png" alt="Zoe Diaz De Rivera">
-        <h3>Ms. Zoe Diaz De Rivera</h3>
-        <p>Representative</p>
-        <p>IT & Business Process Association of the Philippines (IBPAP)</p>
-        <p class="speech">Ms. De Rivera gave an industry overview of the IT-BPM sector, highlighting its role in the Philippine economy and its continued growth through technologies like AI and automation. She emphasized that technical skills are important, but soft skills such as communication, adaptability, and critical thinking are equally valued. She encouraged students to build strong digital portfolios and actively seek internship opportunities to be industry-ready.</p>
+        <div class="speaker-card">
+          <img src="grace.png" alt="Beatrice Grace Bonjibod" />
+          <h3>Ms. Beatrice Grace Bonjibod</h3>
+          <p>Brand Marketing Specialist</p>
+          <p>Teleperformance Philippines</p>
+          <p class="speech">
+            Ms. Bonjibod introduced Teleperformance as a global leader in
+            digital business services. She shared the company’s commitment to
+            innovation, inclusivity, and gender equality—highlighting that 53%
+            of TP’s workforce are women. She stressed the growing importance of
+            soft skills such as communication, collaboration, and empathy in
+            today’s tech-driven industry. Students were encouraged to develop
+            both technical and interpersonal competencies to succeed in the
+            workplace.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="ralph.png" alt="Ralph Vincent Regalado" />
+          <h3>Mr. Ralph Vincent Regalado</h3>
+          <p>Chief Scientist and Head of AI</p>
+          <p>Kollab</p>
+          <p class="speech">
+            Mr. Regalado opened the session with a welcome and shared Kollab’s
+            vision of using AI and collaborative solutions to drive digital
+            innovation. He highlighted the importance of purpose-driven tech and
+            innovation rooted in impact.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="jasmine.png" alt="Jazmine Calma" />
+          <h3>Ms. Jazmine Calma</h3>
+          <p>Senior Engineer for Quality Assurance</p>
+          <p>Kollab</p>
+          <p class="speech">
+            She presented “Why Culture Matters,” explaining how a healthy
+            workplace culture is key to product excellence and personal growth.
+            She urged students to value company culture when choosing where to
+            work or whom to work with.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="keith.png" alt="Toni-Jan Keith Monserrat" />
+          <h3>Mr. Toni-Jan Keith Monserrat</h3>
+          <p>Senior Principal Engineer for AI and Data</p>
+          <p>Kollab</p>
+          <p class="speech">
+            He delivered a session on “Applied AI: From Classroom to Real Use
+            Cases,” connecting students’ academic knowledge to practical
+            applications in industries like agriculture, health, and customer
+            service. He encouraged students to use tech for meaningful social
+            impact.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="miguel.png" alt="Miguel Siriban" />
+          <h3>Mr. Miguel Siriban</h3>
+          <p>UI/UX Designer and Developer</p>
+          <p>Kollab</p>
+          <p class="speech">
+            He led a talk on “How to Build a Dev Portfolio that Gets You Hired,”
+            offering practical tips on showcasing skills through project
+            storytelling and design. He emphasized that creativity and clarity
+            can make portfolios stand out.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="ADB.png" alt="ADB IT Directors" />
+          <h3>Matt Farley <br />& ADB IT Directors</h3>
+          <p>Senior IT Leaders</p>
+          <p>Asian Development Bank (ADB)</p>
+          <p class="speech">
+            Mr. Farley and the ADB team provided an overview of how IT
+            contributes to development banking across Asia and the Pacific. They
+            shared insights into global IT practices, the bank’s digital
+            transformation projects, and offered career advice for working in
+            international, mission-driven organizations. They encouraged
+            students to apply their skills to solve real-world challenges.
+          </p>
+        </div>
+
+        <div class="speaker-card">
+          <img src="heidee.png" alt="Heidee Enriquez" />
+          <h3>Ms. Heidee Enriquez</h3>
+          <p>CEO</p>
+          <p>MicroSourcing</p>
+          <p class="speech">
+            Ms. Enriquez welcomed the students and emphasized the importance of
+            digital skills, adaptability, and continuous learning in today’s
+            fast-changing job market. She inspired students to remain curious
+            and take every opportunity to learn how their education applies in
+            real-world scenarios.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="speaker-card">
-        <img src="yves.png" alt="Yves Gonzalez">
-        <h3>Atty. Yves Gonzalez</h3>
-        <p>Head of Government Affairs and Public Policy</p>
-        <p>Google Philippines</p>
-        <p class="speech">Atty. Gonzalez discussed Google’s mission and how it leads global innovation through technologies like AI that power Search, Translate, and Assistant. He also emphasized digital inclusion programs such as Be Internet Awesome, and the importance of ethical tech governance. He encouraged students to pursue careers where they can combine technical skills with meaningful impact, and to align their passions with societal needs.</p>
-      </div>
+    <footer>
+      &copy; 2025 BSCS Educational Tour Blog |
+      <span
+        style="
+          background: var(--accent);
+          color: #fff;
+          padding: 2px 8px;
+          border-radius: 6px;
+          font-weight: bold;
+        "
+        >Cyrus</span
+      >
+    </footer>
 
-      <div class="speaker-card">
-        <img src="grace.png" alt="Beatrice Grace Bonjibod">
-        <h3>Ms. Beatrice Grace Bonjibod</h3>
-        <p>Brand Marketing Specialist</p>
-        <p>Teleperformance Philippines</p>
-        <p class="speech">Ms. Bonjibod introduced Teleperformance as a global leader in digital business services. She shared the company’s commitment to innovation, inclusivity, and gender equality—highlighting that 53% of TP’s workforce are women. She stressed the growing importance of soft skills such as communication, collaboration, and empathy in today’s tech-driven industry. Students were encouraged to develop both technical and interpersonal competencies to succeed in the workplace.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="ralph.png" alt="Ralph Vincent Regalado">
-        <h3>Mr. Ralph Vincent Regalado</h3>
-        <p>Chief Scientist and Head of AI</p>
-        <p>Kollab</p>
-        <p class="speech">Mr. Regalado opened the session with a welcome and shared Kollab’s vision of using AI and collaborative solutions to drive digital innovation. He highlighted the importance of purpose-driven tech and innovation rooted in impact.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="jasmine.png" alt="Jazmine Calma">
-        <h3>Ms. Jazmine Calma</h3>
-        <p>Senior Engineer for Quality Assurance</p>
-        <p>Kollab</p>
-        <p class="speech">She presented “Why Culture Matters,” explaining how a healthy workplace culture is key to product excellence and personal growth. She urged students to value company culture when choosing where to work or whom to work with.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="keith.png" alt="Toni-Jan Keith Monserrat">
-        <h3>Mr. Toni-Jan Keith Monserrat</h3>
-        <p>Senior Principal Engineer for AI and Data</p>
-        <p>Kollab</p>
-        <p class="speech">He delivered a session on “Applied AI: From Classroom to Real Use Cases,” connecting students’ academic knowledge to practical applications in industries like agriculture, health, and customer service. He encouraged students to use tech for meaningful social impact.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="miguel.png" alt="Miguel Siriban">
-        <h3>Mr. Miguel Siriban</h3>
-        <p>UI/UX Designer and Developer</p>
-        <p>Kollab</p>
-        <p class="speech">He led a talk on “How to Build a Dev Portfolio that Gets You Hired,” offering practical tips on showcasing skills through project storytelling and design. He emphasized that creativity and clarity can make portfolios stand out.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="ADB.png" alt="ADB IT Directors">
-        <h3>Matt Farley <br>& ADB IT Directors</h3>
-        <p>Senior IT Leaders</p>
-        <p>Asian Development Bank (ADB)</p>
-        <p class="speech">Mr. Farley and the ADB team provided an overview of how IT contributes to development banking across Asia and the Pacific. They shared insights into global IT practices, the bank’s digital transformation projects, and offered career advice for working in international, mission-driven organizations. They encouraged students to apply their skills to solve real-world challenges.</p>
-      </div>
-
-      <div class="speaker-card">
-        <img src="heidee.png" alt="Heidee Enriquez">
-        <h3>Ms. Heidee Enriquez</h3>
-        <p>CEO</p>
-        <p>MicroSourcing</p>
-        <p class="speech">Ms. Enriquez welcomed the students and emphasized the importance of digital skills, adaptability, and continuous learning in today’s fast-changing job market. She inspired students to remain curious and take every opportunity to learn how their education applies in real-world scenarios.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 BSCS Educational Tour Blog
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
-    }
-  </script>
-
-</body>
+    <script>
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+      }
+    </script>
+  </body>
 </html>
