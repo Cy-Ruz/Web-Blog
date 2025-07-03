@@ -1,321 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Schedule - BSCS Educational Tour</title>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --secondary: #f1f5f9;
-      --accent: #06b6d4;
-      --text: #1e293b;
-      --muted: #64748b;
-      --white: #fff;
-      --shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
-      --radius: 16px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
-    }
-
-    html {
-      scroll-padding-top: 80px;
-      background: var(--secondary);
-    }
-
-    body {
-      scroll-behavior: smooth;
-      color: var(--text);
-      background: var(--secondary);
-    }
-
-    header {
-      background: var(--white);
-      box-shadow: var(--shadow);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: box-shadow 0.2s;
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 32px;
-      color: var(--primary);
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 32px;
-    }
-
-    .nav-links li {
-      margin: 0;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .nav-links a:hover {
-      background: var(--accent);
-      color: var(--white);
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      height: 3px;
-      width: 28px;
-      background: var(--primary);
-      margin: 5px 0;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 900px) {
-      .navbar {
-        padding: 14px 16px;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule - BSCS Educational Tour</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #f1f5f9;
+        --accent: #06b6d4;
+        --text: #1e293b;
+        --muted: #64748b;
+        --white: #fff;
+        --shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+        --radius: 16px;
       }
-      .nav-links {
-        gap: 16px;
-      }
-    }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", "Inter", Arial, sans-serif;
       }
-      .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 0;
+
+      html {
+        scroll-padding-top: 80px;
+        background: var(--secondary);
+      }
+
+      body {
+        scroll-behavior: smooth;
+        color: var(--text);
+        background: var(--secondary);
+      }
+
+      header {
         background: var(--white);
-        flex-direction: column;
-        width: 100vw;
-        max-height: 0;
-        overflow: hidden;
         box-shadow: var(--shadow);
-        transition: max-height 0.3s;
-        gap: 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: box-shadow 0.2s;
       }
-      .nav-links.active {
-        max-height: 300px;
+
+      .navbar {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 32px;
+        color: var(--primary);
       }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+      }
+
       .nav-links li {
-        text-align: center;
         margin: 0;
       }
+
       .nav-links a {
-        display: block;
-        padding: 18px 0;
-        border-radius: 0;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
       }
-    }
 
-    .hero {
-      min-height: 60vh;
-      background: 
-        linear-gradient(120deg, rgba(37,99,235,0.85) 60%, rgba(6,182,212,0.7) 100%),
-        url('15.jpg') center center/cover no-repeat;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--white);
-    }
+      .nav-links a:hover {
+        background: var(--accent);
+        color: var(--white);
+      }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      background: rgba(255,255,255,0.07);
-      padding: 40px 32px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(2px);
-    }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
 
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      color: var(--white);
-      text-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
+      .menu-toggle span {
+        height: 3px;
+        width: 28px;
+        background: var(--primary);
+        margin: 5px 0;
+        border-radius: 2px;
+      }
 
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #e0e7ef;
-    }
+      @media (max-width: 900px) {
+        .navbar {
+          padding: 14px 16px;
+        }
+        .nav-links {
+          gap: 16px;
+        }
+      }
 
-    .section {
-      padding: 80px 20px 60px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .nav-links {
+          position: absolute;
+          top: 70px;
+          right: 0;
+          background: var(--white);
+          flex-direction: column;
+          width: 100vw;
+          max-height: 0;
+          overflow: hidden;
+          box-shadow: var(--shadow);
+          transition: max-height 0.3s;
+          gap: 0;
+        }
+        .nav-links.active {
+          max-height: 300px;
+        }
+        .nav-links li {
+          text-align: center;
+          margin: 0;
+        }
+        .nav-links a {
+          display: block;
+          padding: 18px 0;
+          border-radius: 0;
+        }
+      }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.2rem;
-      color: var(--primary);
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
+      .hero {
+        min-height: 100vh;
+        width: 100vw;
+        background: url("15.jpg") center center/cover no-repeat;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--white);
+        overflow: hidden;
+      }
 
-    .day-schedule {
-      margin-bottom: 40px;
-      background: var(--white);
-      border-left: 5px solid var(--accent);
-      padding: 24px 20px 18px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+      .hero-bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 30, 50, 0.55);
+        z-index: 1;
+      }
 
-    .day-schedule h3 {
-      color: var(--primary);
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        background: rgba(30, 41, 59, 0.18);
+        border-radius: 28px;
+        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.1);
+        padding: 48px 32px;
+        backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .day-schedule ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
+      .hero-content h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+        color: var(--white);
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
 
-    .day-schedule li {
-      padding: 8px 0;
-      border-bottom: 1px solid #f1f5f9;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
+      .hero-content p {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: #e0e7ef;
+        margin-bottom: 32px;
+      }
 
-    .day-schedule li:last-child {
-      border-bottom: none;
-    }
+      @media (max-width: 900px) {
+        .hero-content {
+          padding: 32px 10px;
+          border-radius: 18px;
+        }
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+      }
 
-    .day-schedule:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 8px 32px rgba(30,41,59,0.13);
-    }
+      @media (max-width: 600px) {
+        .hero-content {
+          padding: 20px 4vw;
+          border-radius: 12px;
+        }
+        .hero-content h1 {
+          font-size: 1.4rem;
+        }
+      }
 
-    footer {
-      text-align: center;
-      padding: 24px 0;
-      background: var(--primary);
-      color: var(--white);
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-      margin-top: 40px;
-    }
-  </style>
-</head>
-<body>
+      .section {
+        padding: 80px 20px 60px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
 
-  <header>
-    <nav class="navbar">
-      <div class="logo">BSCS Educational Tour</div>
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+      .section h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.2rem;
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .day-schedule {
+        margin-bottom: 40px;
+        background: var(--white);
+        border-left: 5px solid var(--accent);
+        padding: 24px 20px 18px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .day-schedule h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .day-schedule ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .day-schedule li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f1f5f9;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .day-schedule li:last-child {
+        border-bottom: none;
+      }
+
+      .day-schedule:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 8px 32px rgba(30, 41, 59, 0.13);
+      }
+
+      footer {
+        text-align: center;
+        padding: 24px 0;
+        background: var(--primary);
+        color: var(--white);
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">BSCS Educational Tour</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="schedule.html">Schedule</a></li>
+          <li><a href="venue.html">Venue</a></li>
+          <li><a href="speakers.html">Speakers</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-content">
+        <h1>Tour Schedule</h1>
+        <p>
+          Explore the activities planned for each day of the BSCS Educational
+          Tour
+        </p>
       </div>
-      <ul class="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
-        <li><a href="venue.html">Venue</a></li>
-        <li><a href="speakers.html">Speakers</a></li>
-      </ul>
-    </nav>
-  </header>
+    </section>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Tour Schedule</h1>
-      <p>Explore the activities planned for each day of the BSCS Educational Tour</p>
-    </div>
-  </section>
+    <section class="section">
+      <h2>3-Day Educational Tour Schedule</h2>
 
-  <section class="section">
-    <h2>3-Day Educational Tour Schedule</h2>
+      <div class="day-schedule">
+        <h3>Day 1 - June 09, 2025</h3>
+        <ul>
+          <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+          <li>08:00 AM – Proceed to Pasig City</li>
+          <li>09:30 AM – Visit: Foundever Philippines</li>
+          <li>12:00 NN – Pack Lunch</li>
+          <li>01:30 PM – Visit: Google Philippines</li>
+          <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+        </ul>
+      </div>
 
-    <div class="day-schedule">
-      <h3>Day 1 - June 09, 2025</h3>
-      <ul>
-        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
-        <li>08:00 AM – Proceed to Pasig City</li>
-        <li>09:30 AM – Visit: Foundever Philippines</li>
-        <li>12:00 NN – Pack Lunch</li>
-        <li>01:30 PM – Visit: Google Philippines</li>
-        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
-      </ul>
-    </div>
+      <div class="day-schedule">
+        <h3>Day 2 - June 10, 2025</h3>
+        <ul>
+          <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+          <li>07:00 AM – Proceed to BGC</li>
+          <li>08:30 AM – Visit: Teleperformance Philippines</li>
+          <li>12:00 NN – Pack Lunch</li>
+          <li>01:30 PM – Visit: Kollab Philippines</li>
+          <li>Optional Activity: Trinoma Mall</li>
+          <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+        </ul>
+      </div>
 
-    <div class="day-schedule">
-      <h3>Day 2 - June 10, 2025</h3>
-      <ul>
-        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
-        <li>07:00 AM – Proceed to BGC</li>
-        <li>08:30 AM – Visit: Teleperformance Philippines</li>
-        <li>12:00 NN – Pack Lunch</li>
-        <li>01:30 PM – Visit: Kollab Philippines</li>
-        <li>Optional Activity: Trinoma Mall</li>
-        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
-      </ul>
-    </div>
+      <div class="day-schedule">
+        <h3>Day 3 - June 11, 2025</h3>
+        <ul>
+          <li>06:00 AM – Breakfast @ DJM Dormitory</li>
+          <li>07:00 AM – Proceed to: Asian Development Bank (ADB) c/o CXC</li>
+          <li>11:30 AM – Lunch @ DJM Dormitory</li>
+          <li>12:30 PM – Proceed to Eastwood</li>
+          <li>01:30 PM – Visit: MicroSourcing</li>
+          <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
+        </ul>
+      </div>
+    </section>
 
-    <div class="day-schedule">
-      <h3>Day 3 - June 11, 2025</h3>
-      <ul>
-        <li>06:00 AM – Breakfast @ DJM Dormitory</li>
-        <li>07:00 AM – Proceed to: Asian Development Bank (ADB) c/o CXC</li>
-        <li>11:30 AM – Lunch @ DJM Dormitory</li>
-        <li>12:30 PM – Proceed to Eastwood</li>
-        <li>01:30 PM – Visit: MicroSourcing</li>
-        <li>07:00 PM – Dinner @ DJM Dormitory / Rest</li>
-      </ul>
-    </div>
-  </section>
+    <footer>&copy; 2025 BSCS Educational Tour Blog</footer>
 
-  <footer>
-    &copy; 2025 BSCS Educational Tour Blog
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('active');
-    }
-  </script>
-
-</body>
+    <script>
+      function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("active");
+      }
+    </script>
+  </body>
 </html>
