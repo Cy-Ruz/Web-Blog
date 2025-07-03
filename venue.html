@@ -10,11 +10,13 @@
     body { scroll-behavior: smooth; }
 
     header {
-      background: rgba(44, 62, 80, 0.85);
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
+      transition: box-shadow 0.2s;
     }
 
     .navbar {
@@ -23,30 +25,41 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
-      color: white;
-      position: relative;
+      padding: 18px 32px;
+      color: #2563eb;
     }
 
-    .logo { font-size: 1.5rem; font-weight: bold; }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2563eb;
+      letter-spacing: 1px;
+    }
 
     .nav-links {
       list-style: none;
       display: flex;
+      gap: 32px;
     }
 
     .nav-links li {
-      margin-left: 20px;
+      margin: 0;
     }
 
     .nav-links a {
-      color: white;
+      color: #1e293b;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
     }
 
-    .nav-links a:hover { color: #1abc9c; }
+    .nav-links a:hover {
+      background: #06b6d4;
+      color: #fff;
+    }
 
     .menu-toggle {
       display: none;
@@ -56,9 +69,20 @@
 
     .menu-toggle span {
       height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
+      width: 28px;
+      background: #2563eb;
+      margin: 5px 0;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 14px 16px;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -70,12 +94,14 @@
         position: absolute;
         top: 60px;
         right: 0;
-        background: rgba(44, 62, 80, 0.95);
+        background: #fff;
         flex-direction: column;
-        width: 100%;
+        width: 100vw;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 24px rgba(30, 41, 59, 0.08);
+        transition: max-height 0.3s;
+        gap: 0;
       }
 
       .nav-links.active {
@@ -83,8 +109,14 @@
       }
 
       .nav-links li {
-        margin: 15px 0;
         text-align: center;
+        margin: 0;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 18px 0;
+        border-radius: 0;
       }
     }
 
